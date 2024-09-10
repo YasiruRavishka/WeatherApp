@@ -1,16 +1,17 @@
-let nameID = document.getElementById("name");
-let temp_c = document.getElementById("temp_c");
-let condition = document.getElementById("condition");
-let conditionImg = document.getElementById("condition-img");
-let humidity = document.getElementById("humidity");
-let wind_kph = document.getElementById("wind_kph");
-let pressure_mb = document.getElementById("pressure_mb");
-let tz_id = document.getElementById("tz_id");
-let region = document.getElementById("region");
-let country = document.getElementById("country");
-let lat = document.getElementById("lat");
-let lon = document.getElementById("lon");
-let localtime = document.getElementById("localtime");
+const nameID = document.getElementById("name");
+const temp_c = document.getElementById("temp_c");
+const condition = document.getElementById("condition");
+const conditionImg = document.getElementById("condition-img");
+const humidity = document.getElementById("humidity");
+const wind_kph = document.getElementById("wind_kph");
+const pressure_mb = document.getElementById("pressure_mb");
+const tz_id = document.getElementById("tz_id");
+const region = document.getElementById("region");
+const country = document.getElementById("country");
+const lat = document.getElementById("lat");
+const lon = document.getElementById("lon");
+const map = document.getElementById("map");
+const localtime = document.getElementById("localtime");
 let dateTime = new Date();
 
 const apiKey = "e8bff90534f74cf8a57113520242708";
@@ -54,7 +55,10 @@ async function fetchCurrentWeather(location) {
     region.innerHTML = data.location.region;
     country.innerHTML = data.location.country;
     lat.innerHTML = data.location.lat;
+    let latitude = parseFloat(data.location.lat);
     lon.innerHTML = data.location.lon;
+    let longitude = parseFloat(data.location.lon);
+    map.innerHTML = `<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude - 0.4}%2C${latitude - 0.1}%2C${longitude + 0.4}%2C${latitude + 0.1}&amp;layer=mapnik&amp;marker=${latitude}%2C${longitude}" style="width:100%; height:100%; border-radius: inherit;"></iframe>`;
     dateTime = new Date(data.location.localtime);
   } catch (error) {
     console.error("CurrentWeather-api doesn't work properly.");
@@ -132,5 +136,5 @@ function updateLocalTime() {
   }
 }
 // ------------------------------ Runtime ------------------------------
-// getLocation();
+getLocation();
 setInterval(updateLocalTime, 1000);
