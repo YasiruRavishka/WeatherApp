@@ -82,7 +82,7 @@ async function fetchWeatherForecast(location) {
       const data = (await response.json()).forecast.forecastday[0];
       cardBody += `<div class="card text-bg-light flex-fill">
                                   <div class="card-body">
-                                    <table class="m-auto">
+                                    <table class="m-auto fw-semibold">
                                       <tr>
                                         <td>${data.date}</td>
                                       </tr>
