@@ -26,8 +26,8 @@ function getLocation() {
       );
     },
     (error) => {
+      loadLocationData("Colombo");
       if (error.code == error.PERMISSION_DENIED) {
-        loadLocationData("Colombo");
         alert("Location access denied.");
       } else {
         alert("Geolocation is not supported. Try a anothor browser.");
