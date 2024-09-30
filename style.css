@@ -32,6 +32,12 @@ header {
     font-weight: 700;
     border-radius: 100px;
   }
+  #condition-img {
+    text-align: right;
+  }
+  #temp_c {
+    text-align: left;
+  }
 }
 section {
   margin: 20px;
